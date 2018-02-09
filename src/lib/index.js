@@ -1,8 +1,7 @@
-import Example from './components/Example';
-import SecondExample from './components/SecondExample';
+import ComputerKeyboard from "./components/ComputerKeyboard";
 
-export default Example;
+export default ComputerKeyboard;
 
 export {
-  SecondExample,
+	ComputerKeyboard,
 };

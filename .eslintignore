@@ -1,0 +1,4 @@
+# ignore CRA scripts & utilities
+config
+public
+scripts

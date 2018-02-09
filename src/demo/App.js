@@ -1,12 +1,22 @@
-import React from 'react';
-import Example from '../lib';
-import { SecondExample } from '../lib';
+import React, { Component } from "react";
+import { ComputerKeyboard } from "../lib";
 
-const App = () => (
-  <div>
-    <Example />
-    <SecondExample />
-  </div>
-);
+class App extends Component {
+	state = {  }
+	render() {
+		return (
+			<div>
+				<ComputerKeyboard controlled keyboardLayout="azerty">
+					{midimsg => {
+						console.log("midimsg", midimsg);
+						return null;
+					}
+					}
+				</ComputerKeyboard>
+			</div>
+
+		);
+	}
+}
 
 export default App;

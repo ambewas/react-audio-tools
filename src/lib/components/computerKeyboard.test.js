@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
-
 import React from "react";
 import ComputerKeyboard from "./ComputerKeyboard";
-import shallow from "react-test-renderer/shallow";
+import ReactTestRenderer from "react-test-renderer";
+import { shallow } from "enzyme";
 
 const setup = propOverrides => {
 	const props = Object.assign({
@@ -11,30 +10,46 @@ const setup = propOverrides => {
 		children: () => null,
 	}, propOverrides);
 
-	const renderer = new shallow();
+	const wrapper = ReactTestRenderer.create(
+		<ComputerKeyboard {...props} />
+	).toJSON();
 
-	renderer.render(<ComputerKeyboard {...props} />);
-
-	const wrapper = renderer.getRenderOutput();
+	const component = shallow(<ComputerKeyboard {...props} />);
 
 	return {
 		props,
 		wrapper,
+		component,
 	};
 };
 
+const map = {};
+
+window.addEventListener = jest.fn().mockImplementation((event, cb) => {
+	map[event] = cb;
+});
+
+
 describe("ComputerKeyboard", () => {
-	it("should render without crashing", () => {
+	xit("should render without crashing", () => {
 		const { wrapper } = setup();
 
 		expect(wrapper).toMatchSnapshot();
 	});
 
-	// it("should throw an error if direct child is not a function", () => {
-	// 	const div = document.createElement("div");
+	it("should throw an error if direct child is not a function", () => {
+		const { component } = setup({
+			children: (msg) => {
+				return <div {...msg}></div>;
+			},
+		});
 
-	// 	expect(() => ReactDOM.render(<ComputerKeyboard />, div)).toThrow(); // eslint-disable-line
-	// });
+		// const children = wrapper.children;
+		map.keydown({ keyCode: 16 });
+		console.log("component", component.state());
+		// console.log("children", children);
+		// expect(wrapper).toThrow(); // eslint-disable-line
+	});
 
 	// it("should pass a midi message to the child-as-a-function", () => {
 	// 	const childFunction = msg => msg;

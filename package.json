@@ -36,6 +36,8 @@
     "copy-webpack-plugin": "^4.3.1",
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "4.10.0",
     "eslint-config-react-app": "^2.0.1",
     "eslint-loader": "1.9.0",
@@ -77,6 +79,7 @@
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
     ],
+    "setupTestFrameworkScriptFile": "<rootDir>/config/setupTests.js",
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"

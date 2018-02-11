@@ -11,6 +11,9 @@ module.exports = {
 		"jsx": true,
 		"classes": true,
 	},
+	"globals": {
+		"jest": true,
+	},
 	"parser": "babel-eslint",
 	"rules": {
 		"react/no-array-index-key": 1,
@@ -34,6 +37,7 @@ module.exports = {
 		"react/jsx-uses-vars": 1,
 		"react/jsx-wrap-multilines": 1,
 		"react/jsx-first-prop-new-line": [1, "multiline"],
-		"react/jsx-indent": [2, "tab"]
+		"react/jsx-indent": [2, "tab"],
+		"react/display-name": [0]
 	}
 }

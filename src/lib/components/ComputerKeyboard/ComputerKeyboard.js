@@ -134,6 +134,19 @@ export class ComputerKeyboard extends Component {
 			return;
 		}
 
+		// order is important here. don't want to send another noteon event
+		if (e.keyCode === 16) {
+			// turn off sustain
+			this.setState(prevState => ({
+				midiMsg: {
+					type: messages.SUSTAIN,
+					pitch: prevState.midiMsg.pitch,
+					velocity: 127, // off
+				},
+			}));
+			return;
+		}
+
 		// return early if keyboard key was already depressed
 		if (this.lastEvent && this.lastEvent.keyCode === e.keyCode) {
 			return;
@@ -166,17 +179,6 @@ export class ComputerKeyboard extends Component {
 			return;
 		}
 
-		if (e.keyCode === 16) {
-			// turn on sustain
-			this.setState({
-				midiMsg: {
-					type: messages.SUSTAIN,
-					pitch: 127, // on
-					velocity: 100,
-				},
-			});
-			return;
-		}
 
 		if (e.keyCode !== 87 && e.keyCode !== 88 && e.keyCode !== 16) {
 			// send a note on event, only if we're pressing a 'note' key.
@@ -200,24 +202,25 @@ export class ComputerKeyboard extends Component {
 			return;
 		}
 
-		// update depressed keys
-		this.lastEvent = null;
-		this.heldKeys[e.keyCode] = undefined;
-
-		if (!this.shouldHandleKeyUpdate(e)) {
-			// don't handle updates for keys we don't want to listen to.
+		// order is important here. don't want to send another noteon event
+		if (e.keyCode === 16) {
+			// turn off sustain
+			this.setState(prevState => ({
+				midiMsg: {
+					type: messages.SUSTAIN,
+					pitch: prevState.midiMsg.pitch,
+					velocity: 0, // off
+				},
+			}));
 			return;
 		}
 
-		if (e.keyCode === 16) {
-			// turn off sustain
-			this.setState({
-				midiMsg: {
-					type: messages.SUSTAIN,
-					pitch: 0, // off
-					velocity: 100,
-				},
-			});
+		// update depressed keys
+		this.lastEvent = null;
+		this.heldKeys[e.keyCode] = undefined;
+		if (!this.shouldHandleKeyUpdate(e)) {
+			// don't handle updates for keys we don't want to listen to.
+			return;
 		}
 
 		if (e.keyCode === 87 || e.keyCode === 88 || e.keyCode === 16) {

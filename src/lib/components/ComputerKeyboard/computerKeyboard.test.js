@@ -42,9 +42,8 @@ describe("ComputerKeyboard", () => {
 
 		eventMocker.keydown({ keyCode: 16 });
 		const state = component.state();
-		const expectedMsg = { "pitch": 127, "type": "cc64", "velocity": 100 };
 
-		expect(state.midiMsg).toEqual(expectedMsg);
+		expect(state.midiMsg.type).toEqual("cc64");
 	});
 
 

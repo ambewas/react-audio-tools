@@ -11,7 +11,7 @@ class App extends Component {
 						midimsg => {
 							// this will eventually render a new component with midimsg prop input.
 							console.log("midimsg", midimsg);
-							return null;
+							return <div>{midimsg.pitch}</div>;
 						}
 					}
 				</ComputerKeyboard>

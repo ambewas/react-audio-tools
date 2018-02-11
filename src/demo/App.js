@@ -7,10 +7,12 @@ class App extends Component {
 		return (
 			<div>
 				<ComputerKeyboard controlled keyboardLayout="azerty">
-					{midimsg => {
-						console.log("midimsg", midimsg);
-						return null;
-					}
+					{
+						midimsg => {
+							// this will eventually render a new component with midimsg prop input.
+							console.log("midimsg", midimsg);
+							return null;
+						}
 					}
 				</ComputerKeyboard>
 			</div>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import PropTypes from "prop-types";
 
 // INFO -> midi cc list http://nickfever.com/music/midi-cc-list
@@ -59,7 +59,6 @@ function generateKeyboardSynth(octave, keyboardLayout) {
 		"186": 16 + offset,
 	};
 }
-
 
 export class ComputerKeyboard extends Component {
 	static propTypes = {
@@ -237,6 +236,7 @@ export class ComputerKeyboard extends Component {
 
 	render = () => {
 		const { midiMsg } = this.state;
+		// we're using children-as-a-function to pass a new midi message through
 
 		return this.props.children(midiMsg);
 	}

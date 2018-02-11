@@ -1,4 +1,4 @@
-import ComputerKeyboard from "./components/ComputerKeyboard";
+import ComputerKeyboard from "./components/ComputerKeyboard/ComputereKeyboard";
 
 export default ComputerKeyboard;
 

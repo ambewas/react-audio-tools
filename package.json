@@ -1,7 +1,7 @@
 {
-  "name": "create-react-library",
-  "version": "1.1.0",
-  "description": "React NPM library starter kit based on Facebook's create react app",
+  "name": "react-audio-tools",
+  "version": "0.0.1",
+  "description": "A set of React components to build things with the webAudio/webMidi API.",
   "main": "build/index.js",
   "scripts": {
     "start": "node scripts/start.js",
@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DimitriMikadze/create-react-library.git"
+    "url": "git+https://github.com/ambewas/react-audio-tools.git"
   },
-  "author": "Dimitri Mikadze <dimitrimikadze@gmail.com>",
+  "author": "Kevin Decock",
   "bugs": {
-    "url": "https://github.com/DimitriMikadze/create-react-library/issues"
+    "url": "https://https://github.com/ambewas/react-audio-tools/issues"
   },
-  "homepage": "https://github.com/DimitriMikadze/create-react-library#readme",
+  "homepage": "https://https://github.com/ambewas/react-audio-tools#readme",
   "license": "MIT",
   "dependencies": {
     "ramda": "^0.25.0"

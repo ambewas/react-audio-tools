@@ -96,4 +96,12 @@ describe("ComputerKeyboard", () => {
 		eventMocker.keydown({ keyCode: 81 });
 		expect(component.state().midiMsg).toEqual({});
 	});
+
+
+	it("should set a C note midiMsg when the A key on a qwerty keyboard is pressed", () => {
+		const { component } = setup({ keyboardLayout: "qwerty" });
+
+		eventMocker.keydown({ keyCode: 65 });
+		expect(component.state().midiMsg.pitch).toBe(36);
+	});
 });

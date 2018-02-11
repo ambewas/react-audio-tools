@@ -148,7 +148,6 @@ export class ComputerKeyboard extends Component {
 		  return;
 		}
 
-
 		if (e.keyCode === 87 && currentOctave > 0) {
 			// pressed the 'W' key, we're going down an octave
 			this.keySynth = generateKeyboardSynth(currentOctave - 1, keyboardLayout);

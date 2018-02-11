@@ -80,6 +80,10 @@ export class ComputerKeyboard extends Component {
 		this.heldKeys = {};
 	}
 
+	componentDidCatch(error, info) {
+		console.log("error, info", error, info); // eslint-disable-line
+	}
+
 	componentDidMount = () => {
 		const { controlled } = this.props;
 

@@ -23,35 +23,77 @@ const setup = propOverrides => {
 	};
 };
 
-const map = {};
+const eventMocker = {};
 
 window.addEventListener = jest.fn().mockImplementation((event, cb) => {
-	map[event] = cb;
+	eventMocker[event] = cb;
 });
 
-
 describe("ComputerKeyboard", () => {
-	xit("should render without crashing", () => {
+	it("should render without crashing", () => {
 		const { wrapper } = setup();
 
 		expect(wrapper).toMatchSnapshot();
 	});
 
-	it("should throw an error if direct child is not a function", () => {
-		const { component } = setup({
-			children: (msg) => {
-				return <div {...msg}></div>;
-			},
-		});
 
-		// const children = wrapper.children;
-		map.keydown({ keyCode: 16 });
-		console.log("component", component.state());
-		// console.log("children", children);
-		// expect(wrapper).toThrow(); // eslint-disable-line
+	it("should set a sustain message to state when shift is pressed", () => {
+		const { component } = setup();
+
+		eventMocker.keydown({ keyCode: 16 });
+		const state = component.state();
+		const expectedMsg = { "pitch": 127, "type": "cc64", "velocity": 100 };
+
+		expect(state.midiMsg).toEqual(expectedMsg);
 	});
 
-	// it("should pass a midi message to the child-as-a-function", () => {
-	// 	const childFunction = msg => msg;
-	// });
+
+	it("should set a noteon message to state when a note key is pressed", () => {
+		const { component } = setup();
+
+		eventMocker.keydown({ keyCode: 81 });
+		const state = component.state();
+
+		expect(state.midiMsg.type).toBe("noteon");
+	});
+
+	it("should set a noteoff message to state when a note key is lifted", () => {
+		const { component } = setup();
+
+		eventMocker.keydown({ keyCode: 81 });
+		eventMocker.keyup({ keyCode: 81 });
+
+		const state = component.state();
+
+		expect(state.midiMsg.type).toBe("noteoff");
+	});
+
+
+	it("should set the correct octave to state when w or x is pressed", () => {
+		const { component } = setup();
+
+		expect(component.state().currentOctave).toBe(3);
+		eventMocker.keydown({ keyCode: 87 });
+		expect(component.state().currentOctave).toBe(2);
+		eventMocker.keydown({ keyCode: 88 });
+		eventMocker.keyup({ keyCode: 88 });
+		eventMocker.keydown({ keyCode: 88 });
+		expect(component.state().currentOctave).toBe(4);
+	});
+
+
+	it("should ignore keypresses we are not listening for", () => {
+		const { component } = setup();
+
+		eventMocker.keydown({ keyCode: 45 });
+		expect(component.state().midiMsg).toEqual({});
+	});
+
+
+	it("should ignore keypresses if the component is not controlled", () => {
+		const { component } = setup({ controlled: false });
+
+		eventMocker.keydown({ keyCode: 81 });
+		expect(component.state().midiMsg).toEqual({});
+	});
 });

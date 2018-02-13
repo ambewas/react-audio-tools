@@ -29,7 +29,7 @@ class App extends Component {
 	render() {
 	  return (
 	    <Connecter>
-				it is possible to route the inputs and outputs however you like:
+        it is possible to route the inputs and outputs however you like:
 	      <button onClick={() => this.setState({ input: "tremolo" })}>{"synth -> tremolo -> output"}</button>
 	      <button onClick={() => this.setState({ input: "distortion" })}>{"synth -> distortion -> output"}</button>
 

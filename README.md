@@ -14,7 +14,7 @@ Here's the full code from our demo application:
 
 ```js
 import React, { Component } from "react";
-import { ComputerKeyboard, MonoSynth, AudioOutput, Distortion, Tremolo, Connecter } from "../lib";
+import { ComputerKeyboard, MonoSynth, AudioOutput, Distortion, Tremolo, Connecter } from "react-audio-tools";
 
 class App extends Component {
   state = {}

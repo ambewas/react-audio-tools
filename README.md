@@ -6,7 +6,7 @@ This is a *very* young library and is still in constant development. Do not expe
 
 ## install
 
-`npm i react-audio-tools`
+`npm i react-audio-tools --save`
 
 ## usage
 

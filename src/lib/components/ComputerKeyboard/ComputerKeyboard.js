@@ -1,13 +1,8 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
-
+import { midiMessages } from "../../constants";
 // INFO -> midi cc list http://nickfever.com/music/midi-cc-list
 
-const messages = {
-  SUSTAIN: "cc64",
-  NOTE_ON: "noteon",
-  NOTE_OFF: "noteoff",
-};
 
 const azertyKeysToListenTo = ["81", "90", "83", "69", "68", "70", "84", "71", "89", "72", "85", "74", "75", "79", "76", "80", "77", "87", "88", "16"];
 const qwertyKeysToListenTo = ["65", "87", "83", "69", "68", "70", "84", "71", "89", "72", "85", "74", "75", "79", "76", "80", "186", "90", "88", "16"];
@@ -139,7 +134,7 @@ export class ComputerKeyboard extends Component {
 	    // turn off sustain
 	    this.setState(prevState => ({
 	      midiMsg: {
-	        type: messages.SUSTAIN,
+	        type: midiMessages.SUSTAIN,
 	        pitch: prevState.midiMsg.pitch,
 	        velocity: 127, // off
 	      },
@@ -187,7 +182,7 @@ export class ComputerKeyboard extends Component {
 
 	    this.setState({
 	      midiMsg: {
-	        type: messages.NOTE_ON,
+	        type: midiMessages.NOTE_ON,
 	        pitch,
 	        velocity: 100,
 	      },
@@ -207,7 +202,7 @@ export class ComputerKeyboard extends Component {
 	    // turn off sustain
 	    this.setState(prevState => ({
 	      midiMsg: {
-	        type: messages.SUSTAIN,
+	        type: midiMessages.SUSTAIN,
 	        pitch: prevState.midiMsg.pitch,
 	        velocity: 0, // off
 	      },
@@ -233,7 +228,7 @@ export class ComputerKeyboard extends Component {
 
 	  this.setState({
 	    midiMsg: {
-	      type: messages.NOTE_OFF,
+	      type: midiMessages.NOTE_OFF,
 	      pitch,
 	      velocity: 100,
 	    },

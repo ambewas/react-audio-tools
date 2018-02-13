@@ -43,9 +43,31 @@ describe("ComputerKeyboard", () => {
     eventMocker.keydown({ keyCode: 16 });
     const state = component.state();
 
-    expect(state.midiMsg.type).toEqual("cc64");
+    expect(state.midiMsg.type).toBe("cc64");
+    expect(state.midiMsg.velocity).toBe(127);
   });
 
+  it("should set a sustain OFF message to state when shift is released", () => {
+    const { component } = setup();
+
+    eventMocker.keyup({ keyCode: 16 });
+    const state = component.state();
+
+    expect(state.midiMsg.type).toBe("cc64");
+    expect(state.midiMsg.velocity).toBe(0);
+  });
+
+  it("should return early out of the keydown if the key had already been pressed", () => {
+    const { component } = setup();
+
+    eventMocker.keydown({ keyCode: 81 });
+    const state = component.state();
+
+    eventMocker.keydown({ keyCode: 81 });
+    const secondState = component.state();
+
+    expect(state.midiMsg.pitch).toBe(secondState.midiMsg.pitch);
+  });
 
   it("should set a noteon message to state when a note key is pressed", () => {
     const { component } = setup();

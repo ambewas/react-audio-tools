@@ -19,11 +19,11 @@ class Connecter extends Component {
   }
 
   constructor() {
-	  super();
-	  this.state = {
-	    connections: {},
-	  };
-	  audioStore.addChangeListener(this.onChange);
+    super();
+    this.state = {
+      connections: {},
+    };
+    audioStore.addChangeListener(this.onChange);
   }
 
   getChildContext() {
@@ -36,13 +36,13 @@ class Connecter extends Component {
   }
 
   componentWillUnmount() {
-	  audioStore.removeChangeListener(this.onChange);
+    audioStore.removeChangeListener(this.onChange);
   }
 
   onChange = () => {
-	  this.setState({
-	    connections: audioStore.getConnections(),
-	  });
+    this.setState({
+      connections: audioStore.getConnections(),
+    });
   }
 
   render() {

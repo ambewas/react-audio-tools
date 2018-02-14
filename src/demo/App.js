@@ -8,7 +8,14 @@ class App extends Component {
 	  super();
 	  this.state = {
 	    input: "tremolo",
+	    keyboardLayout: "azerty",
 	  };
+	}
+
+	toggleLayout() {
+	  return this.state.keyboardLayout === "azerty"
+	    ? "qwerty"
+	    : "azerty";
 	}
 
 	render() {
@@ -25,6 +32,10 @@ class App extends Component {
 	      <Distortion input={"monosynth"} output={"distortion"} />
 	      <Tremolo input={"monosynth"} output={"tremolo"} />
 	      <AudioOutput input={this.state.input} />
+
+              <button onClick={() => this.setState({ keyboardLayout: this.toggleLayout() })}>
+                {"keyboard layout: " + this.state.keyboardLayout}
+              </button>
 	    </Connector>
 	  );
 	}

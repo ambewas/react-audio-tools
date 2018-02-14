@@ -16,9 +16,9 @@
   },
   "author": "Kevin Decock",
   "bugs": {
-    "url": "https://https://github.com/ambewas/react-audio-tools/issues"
+    "url": "https://github.com/ambewas/react-audio-tools/issues"
   },
-  "homepage": "https://https://github.com/ambewas/react-audio-tools#readme",
+  "homepage": "https://github.com/ambewas/react-audio-tools#readme",
   "license": "MIT",
   "dependencies": {
     "ramda": "^0.25.0",

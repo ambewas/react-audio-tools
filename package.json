@@ -22,7 +22,8 @@
   "license": "MIT",
   "dependencies": {
     "ramda": "^0.25.0",
-    "tone": "^0.11.11"
+    "tone": "^0.11.11",
+    "webmidi": "^2.0.0"
   },
   "devDependencies": {
     "@district01/eslint-config": "^2.0.0",

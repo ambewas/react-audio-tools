@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ComputerKeyboard, MonoSynth, AudioOutput, Distortion, Tremolo, Connector } from "../lib";
+import { MidiController, MonoSynth, AudioOutput, Distortion, Tremolo, Connector } from "../lib";
 
 class App extends Component {
 	state = {}
@@ -18,9 +18,9 @@ class App extends Component {
 	      <button onClick={() => this.setState({ input: "tremolo" })}>{"synth -> tremolo -> output"}</button>
 	      <button onClick={() => this.setState({ input: "distortion" })}>{"synth -> distortion -> output"}</button>
 
-	      <ComputerKeyboard controlled keyboardLayout="azerty">
+	      <MidiController controlled keyboardLayout="azerty">
 	        {msg => <MonoSynth midiMsg={msg} output={"monosynth"} />}
-	      </ComputerKeyboard>
+	      </MidiController>
 
 	      <Distortion input={"monosynth"} output={"distortion"} />
 	      <Tremolo input={"monosynth"} output={"tremolo"} />

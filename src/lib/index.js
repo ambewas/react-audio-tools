@@ -6,6 +6,7 @@ import Tremolo from "./components/Effects/Tremolo/Tremolo";
 import MonoSynth from "./components/MonoSynth/MonoSynth";
 import audioContext from "./store/audioContext";
 import Connector from "./store/Connector";
+import MidiController from "./components/MidiController/MidiController";
 
 export default ComputerKeyboard;
 
@@ -18,4 +19,5 @@ export {
   Tremolo,
   audioContext,
   Connector,
+  MidiController,
 };

@@ -34,7 +34,6 @@ export const handleMonophonicNoteTriggers = (midiMsg, someClass) => {
     const noteToTrigger = last(someClass.playingNotes);
 
     if (noteToTrigger !== someClass.lastPlayingNote) {
-      console.log("midiMsg.velocity", midiMsg.velocity);
       someClass.audioNode.triggerAttack(noteToTrigger, "+0.005", velocity / 100);
     }
     someClass.lastPlayingNote = noteToTrigger;

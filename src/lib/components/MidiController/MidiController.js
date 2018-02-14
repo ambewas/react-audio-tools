@@ -13,10 +13,18 @@ class MidiController extends Component {
 
   constructor(props) {
     super(props);
+  }
 
-    if (props.controlled) {
-      this.requestMidiAccess();
+  componentDidMount() {
+    this.requestMidiAccess();
+  }
+
+  componentWillUnmount() {
+    for (let input in this.inputs) {
+      this.inputs[input].removeListener("noteon", "all", this.handleNoteOn);
+      this.inputs[input].removeListener("noteoff", "all", this.handleNoteOff);
     }
+    webmidi.disable();
   }
 
   requestMidiAccess = () => {
@@ -30,11 +38,11 @@ class MidiController extends Component {
   }
 
   initializeMidi = () => {
-    const inputs = webmidi.inputs;
+    this.inputs = webmidi.inputs;
 
-    for (let input in inputs) {
-      inputs[input].addListener("noteon", "all", this.handleNoteOn);
-      inputs[input].addListener("noteoff", "all", this.handleNoteOff);
+    for (let input in this.inputs) {
+      this.inputs[input].addListener("noteon", "all", this.handleNoteOn);
+      this.inputs[input].addListener("noteoff", "all", this.handleNoteOff);
     }
   }
 

@@ -20,18 +20,22 @@ class MidiController extends Component {
   }
 
   componentWillUnmount() {
-    for (let input in this.inputs) {
-      this.inputs[input].removeListener("noteon", "all", this.handleNoteOn);
-      this.inputs[input].removeListener("noteoff", "all", this.handleNoteOff);
+    if (this.canAccessMidi) {
+      for (let input in this.inputs) {
+        this.inputs[input].removeListener("noteon", "all", this.handleNoteOn);
+        this.inputs[input].removeListener("noteoff", "all", this.handleNoteOff);
+      }
+      webmidi.disable();
     }
-    webmidi.disable();
   }
 
   requestMidiAccess = () => {
     webmidi.enable(err => {
       if (err) {
+        this.canAccessMidi = false;
         alert("No midi support in your browser."); // eslint-disable-line
       } else {
+        this.canAccessMidi = true;
         this.initializeMidi();
       }
     });

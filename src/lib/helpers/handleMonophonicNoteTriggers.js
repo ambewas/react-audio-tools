@@ -34,7 +34,7 @@ export const handleMonophonicNoteTriggers = (midiMsg, someClass) => {
     const noteToTrigger = last(someClass.playingNotes);
 
     if (noteToTrigger !== someClass.lastPlayingNote) {
-      someClass.audioNode.triggerAttack(noteToTrigger);
+      someClass.audioNode.triggerAttack(noteToTrigger, "+0.005");
     }
     someClass.lastPlayingNote = noteToTrigger;
   }

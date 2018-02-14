@@ -8,7 +8,6 @@ class MidiController extends Component {
   state = {}
   static propTypes = {
     children: PropTypes.func,
-    controlled: PropTypes.bool,
   }
 
   constructor(props) {

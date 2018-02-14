@@ -53,7 +53,7 @@ const options = {
       "type" : "sawtooth",
     },
     "envelope" : {
-      "attack" : 1,
+      "attack" : 0.1,
     },
     filter  : {
       Q: 5,

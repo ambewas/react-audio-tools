@@ -33,11 +33,15 @@ export const handleMonophonicNoteTriggers = (midiMsg, someClass) => {
   if (someNoteIsDepressed) {
     const noteToTrigger = last(someClass.playingNotes);
 
-    someClass.audioNode.triggerAttack(noteToTrigger);
+    if (noteToTrigger !== someClass.lastPlayingNote) {
+      someClass.audioNode.triggerAttack(noteToTrigger);
+    }
+    someClass.lastPlayingNote = noteToTrigger;
   }
 
   // if nothing is depressed anymore & sustain is off, kill the audioNode
   if (!someNoteIsDepressed && !someClass.sustained) {
     someClass.audioNode.triggerRelease();
+    someClass.lastPlayingNote = undefined;
   }
 };

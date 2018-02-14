@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Tone from "tone";
 import PropTypes from "prop-types";
-import { makeSynth } from "../HOC";
+import { connect } from "../HOC";
 
 class FMsynth extends Component {
   static propTypes = {
-    synth: PropTypes.object, // eslint-disable-line
+    audioNode: PropTypes.object, // eslint-disable-line
   }
 
   constructor(props) {
@@ -27,7 +27,7 @@ class FMsynth extends Component {
 
 // setup the synth
 const options = {
-  synth: new Tone.FMSynth({
+  audioNode: new Tone.FMSynth({
     "modulationIndex": 12.22,
     "carrier": {
       "envelope": {
@@ -47,4 +47,4 @@ const options = {
   }),
 };
 
-export default makeSynth(options)(FMsynth);
+export default connect(options)(FMsynth);

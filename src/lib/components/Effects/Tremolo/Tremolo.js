@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Tone from "tone";
-import { makeEffect } from "../../HOC";
+import { connect } from "../../HOC";
 
 class Tremolo extends Component {
   static propTypes = {
-    effectNode: PropTypes.object,
+    audioNode: PropTypes.object,
   }
 
   constructor(props) {
@@ -14,11 +14,11 @@ class Tremolo extends Component {
       tremolo: 1,
     };
 
-    this.effectNode = this.props.effectNode;
+    this.audioNode = this.props.audioNode;
   }
 
   componentDidUpdate() {
-    this.effectNode.frequency.value = this.state.tremolo;
+    this.audioNode.frequency.value = this.state.tremolo;
   }
 
   render() {
@@ -33,7 +33,7 @@ class Tremolo extends Component {
 }
 
 const options = {
-  effectNode: new Tone.Tremolo(9, 0.75).start(),
+  audioNode: new Tone.Tremolo(9, 0.75).start(),
 };
 
-export default makeEffect(options)(Tremolo);
+export default connect(options)(Tremolo);

@@ -2,7 +2,7 @@ import { midiMessages } from "../constants";
 import { append, without, last } from "ramda";
 import { noteParser } from "./noteParser";
 
-// handle midi messages for the specific synth class that is using the function.
+// handle midi messages for the specific audioNode class that is using the function.
 // note that we're assigning statics on the class, to remember which notes have been
 // played before. Got to store them somewhere. On the class itself seems fine for now.
 export const handleMonophonicNoteTriggers = (midiMsg, someClass) => {
@@ -29,15 +29,15 @@ export const handleMonophonicNoteTriggers = (midiMsg, someClass) => {
 
   const someNoteIsDepressed = someClass.playingNotes && someClass.playingNotes.length > 0;
 
-  // trigger the synth for the last note in playingNotes (it's monophonic after all);
+  // trigger the audioNode for the last note in playingNotes (it's monophonic after all);
   if (someNoteIsDepressed) {
     const noteToTrigger = last(someClass.playingNotes);
 
-    someClass.synth.triggerAttack(noteToTrigger);
+    someClass.audioNode.triggerAttack(noteToTrigger);
   }
 
-  // if nothing is depressed anymore & sustain is off, kill the synth
+  // if nothing is depressed anymore & sustain is off, kill the audioNode
   if (!someNoteIsDepressed && !someClass.sustained) {
-    someClass.synth.triggerRelease();
+    someClass.audioNode.triggerRelease();
   }
 };

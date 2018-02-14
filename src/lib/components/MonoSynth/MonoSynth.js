@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Tone from "tone";
 import PropTypes from "prop-types";
 import { Knob } from "../Atoms";
-import { makeSynth } from "../HOC";
+import { connect } from "../HOC";
 
 class MonoSynth extends Component {
   static propTypes = {
-    synth: PropTypes.object,
+    audioNode: PropTypes.object,
   }
   constructor(props) {
     super(props);
@@ -17,9 +17,9 @@ class MonoSynth extends Component {
   }
 
   componentDidUpdate() {
-    const { synth } = this.props;
+    const { audioNode } = this.props;
 
-    synth.filterEnvelope.set({
+    audioNode.filterEnvelope.set({
       baseFrequency: this.state.knobValue,
     });
   }
@@ -48,7 +48,7 @@ class MonoSynth extends Component {
 
 // setup the synth
 const options = {
-  synth: new Tone.MonoSynth({
+  audioNode: new Tone.MonoSynth({
     "oscillator" : {
       "type" : "sawtooth",
     },
@@ -72,4 +72,4 @@ const options = {
   }),
 };
 
-export default makeSynth(options)(MonoSynth);
+export default connect(options)(MonoSynth);

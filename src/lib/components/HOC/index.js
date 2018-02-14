@@ -1,7 +1,5 @@
-import makeSynth from "./makeSynth";
-import makeEffect from "./makeEffect";
+import connect from "./connect";
 
 export {
-  makeSynth,
-  makeEffect,
+  connect,
 };

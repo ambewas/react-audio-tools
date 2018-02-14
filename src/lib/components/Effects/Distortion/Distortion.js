@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Tone from "tone";
-import { makeEffect } from "../../HOC";
+import { connect } from "../../HOC";
 
 class Distortion extends Component {
   static propTypes = {
-    effectNode: PropTypes.object,
+    audioNode: PropTypes.object,
   }
 
   constructor(props) {
@@ -14,11 +14,11 @@ class Distortion extends Component {
       distortion: 0,
     };
 
-    this.effectNode = this.props.effectNode;
+    this.audioNode = this.props.audioNode;
   }
 
   componentDidUpdate() {
-    this.effectNode.distortion = this.state.distortion;
+    this.audioNode.distortion = this.state.distortion;
   }
 
   render() {
@@ -33,7 +33,7 @@ class Distortion extends Component {
 }
 
 const options = {
-  effectNode: new Tone.Distortion(0),
+  audioNode: new Tone.Distortion(0),
 };
 
-export default makeEffect(options)(Distortion);
+export default connect(options)(Distortion);

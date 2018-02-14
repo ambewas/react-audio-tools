@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { handleMonophonicNoteTriggers } from "../../helpers";
 
 const makeSynth = options => WrappedComponent => {
   return class Enhancer extends Component {
     static propTypes = {
       output: PropTypes.string,
       input: PropTypes.string,
+      midiMsg: PropTypes.object,
     }
 
     static contextTypes = {
@@ -15,7 +17,7 @@ const makeSynth = options => WrappedComponent => {
 
     constructor() {
       super();
-      this.effectNode = options.effectNode;
+      this.audioNode = options.audioNode;
     }
 
     componentDidMount() {
@@ -24,11 +26,11 @@ const makeSynth = options => WrappedComponent => {
 
       // setup proper initial connections
       if (input && connections[input]) {
-        connections[input].connect(this.effectNode);
+        connections[input].connect(this.audioNode);
       }
 
       if (output) {
-        setOutput(this.effectNode, output);
+        setOutput(this.audioNode, output);
       }
     }
 
@@ -43,17 +45,23 @@ const makeSynth = options => WrappedComponent => {
 
       // connect the new input
       if (input) {
-        connections[input].connect(this.effectNode);
+        connections[input].connect(this.audioNode);
       }
 
       // set to correct output node
       if (output && output !== this.props.output) {
-        setOutput(this.effectNode, output);
+        setOutput(this.audioNode, output);
       }
     }
 
     render() {
-      return <WrappedComponent {...this.props} effectNode={this.effectNode} />;
+      const { midiMsg } = this.props;
+
+      if (midiMsg) {
+        handleMonophonicNoteTriggers(midiMsg, this);
+      }
+
+      return <WrappedComponent {...this.props} audioNode={this.audioNode} />;
     }
   };
 };

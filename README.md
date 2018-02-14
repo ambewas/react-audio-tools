@@ -1,5 +1,9 @@
 A set of React components to build things with the webAudio/webMidi API.
 
+## Demo app
+
+http://react-audio-tools.surge.sh/
+
 ## Notice
 
 This is a *very* young library and is still in constant development. Do not expect a stable release just yet -- things will break.

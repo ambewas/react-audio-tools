@@ -14,7 +14,7 @@ Here's the full code from our demo application:
 
 ```js
 import React, { Component } from "react";
-import { ComputerKeyboard, MonoSynth, AudioOutput, Distortion, Tremolo, Connecter } from "react-audio-tools";
+import { ComputerKeyboard, MonoSynth, AudioOutput, Distortion, Tremolo, Connector } from "react-audio-tools";
 
 class App extends Component {
   state = {}
@@ -28,7 +28,7 @@ class App extends Component {
 
   render() {
     return (
-      <Connecter>
+      <Connector>
         it is possible to route the inputs and outputs however you like:
         <button onClick={() => this.setState({ input: "tremolo" })}>{"synth -> tremolo -> output"}</button>
         <button onClick={() => this.setState({ input: "distortion" })}>{"synth -> distortion -> output"}</button>
@@ -40,7 +40,7 @@ class App extends Component {
         <Distortion input={"monosynth"} output={"distortion"} />
         <Tremolo input={"monosynth"} output={"tremolo"} />
         <AudioOutput input={this.state.input} />
-      </Connecter>
+      </Connector>
     );
   }
 }

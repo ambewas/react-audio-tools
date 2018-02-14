@@ -1,5 +1,5 @@
 /**
- * connecter is a context provider component that talks to the audioStore
+ * connector is a context provider component that talks to the audioStore
  */
 import { Component } from "react";
 import PropTypes from "prop-types";
@@ -8,7 +8,7 @@ import audioContext from "./audioContext";
 
 const audioStore = new audioContext();
 
-class Connecter extends Component {
+class Connector extends Component {
   static childContextTypes = {
     setOutput: PropTypes.func,
     connections: PropTypes.object,
@@ -50,4 +50,4 @@ class Connecter extends Component {
   }
 }
 
-export default Connecter;
+export default Connector;

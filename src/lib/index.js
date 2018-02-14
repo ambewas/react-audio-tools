@@ -5,7 +5,7 @@ import Distortion from "./components/Effects/Distortion/Distortion";
 import Tremolo from "./components/Effects/Tremolo/Tremolo";
 import MonoSynth from "./components/MonoSynth/MonoSynth";
 import audioContext from "./store/audioContext";
-import Connecter from "./store/Connecter";
+import Connector from "./store/Connector";
 
 export default ComputerKeyboard;
 
@@ -17,5 +17,5 @@ export {
   Distortion,
   Tremolo,
   audioContext,
-  Connecter,
+  Connector,
 };

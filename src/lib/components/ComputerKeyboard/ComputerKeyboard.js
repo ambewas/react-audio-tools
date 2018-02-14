@@ -180,6 +180,8 @@ export class ComputerKeyboard extends Component {
 	    // TODO - this should set midiMsg to a TRUE midi messages, or at least the sort of message that's received and sent through by the midi controller
 	    const pitch = this.keySynth[e.keyCode];
 
+	    if (!pitch) return;
+
 	    this.setState({
 	      midiMsg: {
 	        type: midiMessages.NOTE_ON,
@@ -225,6 +227,8 @@ export class ComputerKeyboard extends Component {
 
 	  // set noteoff midi message to state.
 	  const pitch = this.keySynth[e.keyCode];
+	  
+	  if (!pitch) return;
 
 	  this.setState({
 	    midiMsg: {

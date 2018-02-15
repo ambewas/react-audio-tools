@@ -4,3 +4,8 @@ export const midiMessages = {
   NOTE_ON: "noteon",
   NOTE_OFF: "noteoff",
 };
+
+
+export const parameterTypes = {
+  NORMALRANGE: "normalRange",
+};

@@ -7,8 +7,21 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      input: "tremolo",
       useMidiController: false,
+      /**
+       * Effects,... are all controlled components.
+       * Saving settings, providing defaults,... should be trivial to implement now.
+       * Do note that you must supply ALL params should you wish to provide your own defaults.
+       * We will throw an error if you don't
+       */
+      tremoloParams: {
+        frequency: 23,
+        depth: 1,
+        spread: 0,
+      },
+      distortionParams: {
+        distortion: 1,
+      },
     };
   }
 
@@ -22,11 +35,6 @@ class App extends Component {
           {useMidiController ? "use keyboard" : "use midicontroller"}
         </button>
 
-
-        it is possible to route the inputs and outputs however you like:
-        <button onClick={() => this.setState({ input: "tremolo" })}>{"synth -> tremolo -> output"}</button>
-        <button onClick={() => this.setState({ input: "distortion" })}>{"synth -> distortion -> output"}</button>
-
         {
           useMidiController ? (
             <MidiController>
@@ -39,9 +47,19 @@ class App extends Component {
           )
         }
 
-        <Distortion input={"monosynth"} output={"distortion"} />
-        <Tremolo input={"monosynth"} output={"tremolo"} />
-        <AudioOutput input={this.state.input} />
+        <Tremolo
+          input={"monosynth"}
+          output={"tremolo"}
+          onChange={params => this.setState({ tremoloParams: params })}
+          params={this.state.tremoloParams}
+        />
+        <Distortion
+          input={"tremolo"}
+          output={"distortion"}
+          onChange={params => this.setState({ distortionParams: params })}
+          params={this.state.distortionParams}
+        />
+        <AudioOutput input={"distortion"} />
       </Connector>
     );
   }

@@ -1,6 +1,6 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
-import { midiMessages } from "../../constants";
+import { midiMessages } from "../../../constants";
 import webmidi from "webmidi";
 
 
@@ -42,7 +42,6 @@ class MidiController extends Component {
 
   initializeMidi = () => {
     this.inputs = webmidi.inputs;
-
     for (let input in this.inputs) {
       this.inputs[input].addListener("noteon", "all", this.handleNoteOn);
       this.inputs[input].addListener("noteoff", "all", this.handleNoteOff);

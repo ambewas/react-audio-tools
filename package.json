@@ -21,6 +21,7 @@
   "homepage": "https://github.com/ambewas/react-audio-tools#readme",
   "license": "MIT",
   "dependencies": {
+    "lensify": "^0.1.0",
     "ramda": "^0.25.0",
     "tone": "^0.11.11",
     "webmidi": "^2.0.0"

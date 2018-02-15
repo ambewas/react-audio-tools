@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Tone from "tone";
 import PropTypes from "prop-types";
-import { connect } from "../HOC";
+import { connect } from "../../HOC";
 
 class FMsynth extends Component {
   static propTypes = {

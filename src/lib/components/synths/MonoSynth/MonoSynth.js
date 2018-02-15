@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Tone from "tone";
 import PropTypes from "prop-types";
-import { Knob } from "../Atoms";
-import { connect } from "../HOC";
+import { Knob } from "../../Atoms";
+import { connect } from "../../HOC";
 
 class MonoSynth extends Component {
   static propTypes = {

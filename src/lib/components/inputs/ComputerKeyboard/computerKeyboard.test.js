@@ -1,27 +1,11 @@
-import React from "react";
 import ComputerKeyboard from "./ComputerKeyboard";
-import ReactTestRenderer from "react-test-renderer";
-import { shallow } from "enzyme";
+import { setupComponent } from "../../../helpers/index";
 
-const setup = propOverrides => {
-  const props = Object.assign({
-    keyboardLayout: "azerty",
-    controlled: true,
-    children: () => null,
-  }, propOverrides);
-
-  const wrapper = ReactTestRenderer.create(
-    <ComputerKeyboard {...props} />
-  ).toJSON();
-
-  const component = shallow(<ComputerKeyboard {...props} />);
-
-  return {
-    props,
-    wrapper,
-    component,
-  };
-};
+const setup = setupComponent(ComputerKeyboard, {
+  keyboardLayout: "azerty",
+  controlled: true,
+  children: () => null,
+});
 
 const eventMocker = {};
 

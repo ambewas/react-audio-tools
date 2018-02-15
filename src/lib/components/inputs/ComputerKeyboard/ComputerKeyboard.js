@@ -1,6 +1,6 @@
 import { Component } from "react";
 import PropTypes from "prop-types";
-import { midiMessages } from "../../constants";
+import { midiMessages } from "../../../constants";
 // INFO -> midi cc list http://nickfever.com/music/midi-cc-list
 
 

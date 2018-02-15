@@ -1,12 +1,12 @@
-import ComputerKeyboard from "./components/ComputerKeyboard/ComputerKeyboard";
-import FMsynth from "./components/FMsynth/FMsynth";
+import ComputerKeyboard from "./components/inputs/ComputerKeyboard/ComputerKeyboard";
+import MidiController from "./components/inputs/MidiController/MidiController";
+import FMsynth from "./components/synths/FMsynth/FMsynth";
+import MonoSynth from "./components/synths/MonoSynth/MonoSynth";
 import AudioOutput from "./components/AudioOutput/AudioOutput";
-import Distortion from "./components/Effects/Distortion/Distortion";
-import Tremolo from "./components/Effects/Tremolo/Tremolo";
-import MonoSynth from "./components/MonoSynth/MonoSynth";
+import Distortion from "./components/effects/Distortion/Distortion";
+import Tremolo from "./components/effects/Tremolo/Tremolo";
 import audioContext from "./store/audioContext";
 import Connector from "./store/Connector";
-import MidiController from "./components/MidiController/MidiController";
 
 export default ComputerKeyboard;
 

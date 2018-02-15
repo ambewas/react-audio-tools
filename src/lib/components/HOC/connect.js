@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { handleMonophonicNoteTriggers } from "../../helpers";
 
-const makeSynth = options => WrappedComponent => {
+const connect = options => WrappedComponent => {
   return class Enhancer extends Component {
     static propTypes = {
       output: PropTypes.string,
@@ -38,13 +38,13 @@ const makeSynth = options => WrappedComponent => {
       const { input, output } = nextProps;
       const { connections, setOutput } = nextContext;
 
-      // disconnect the current input if it's a different ont
+      // disconnect the current input if it's a different one
       if (input !== this.props.input) {
         connections[this.props.input].disconnect();
       }
 
       // connect the new input
-      if (input) {
+      if (input && connections[input]) {
         connections[input].connect(this.audioNode);
       }
 
@@ -67,4 +67,4 @@ const makeSynth = options => WrappedComponent => {
 };
 
 
-export default makeSynth;
+export default connect;

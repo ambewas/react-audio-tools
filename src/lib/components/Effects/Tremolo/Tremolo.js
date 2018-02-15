@@ -1,39 +1,24 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
 import Tone from "tone";
-import { connect } from "../../HOC";
-
-class Tremolo extends Component {
-  static propTypes = {
-    audioNode: PropTypes.object,
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      tremolo: 1,
-    };
-
-    this.audioNode = this.props.audioNode;
-  }
-
-  componentDidUpdate() {
-    this.audioNode.frequency.value = this.state.tremolo;
-  }
-
-  render() {
-    return (
-      <div>
-        <button onClick={() => this.setState({ tremolo: 1 })}>slow tremolo</button>
-        <button onClick={() => this.setState({ tremolo: 32 })}>RAAAH!</button>
-        {this.state.tremolo}
-      </div>
-    );
-  }
-}
+import { generateEffectComponent } from "../../HOC";
+import tremoloRenderer from "./tremoloRenderer";
+import { parameterTypes } from "../../../constants";
 
 const options = {
-  audioNode: new Tone.Tremolo(9, 0.75).start(),
+  connectOptions: {
+    audioNode: new Tone.Tremolo(9, 0.75).start(),
+  },
+  defaultParameters: {
+    frequency: 1,
+    depth: 1,
+    spread: 0,
+  },
+  parameterTypes: {
+    frequency: parameterTypes.FULL,
+    spread: parameterTypes.FULL,
+    depth: parameterTypes.NORMALRANGE,
+  },
 };
 
-export default connect(options)(Tremolo);
+const Tremolo = generateEffectComponent("Tremolo", options, tremoloRenderer);
+
+export default Tremolo;

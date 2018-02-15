@@ -40,7 +40,7 @@ export const handleMonophonicNoteTriggers = (midiMsg, someClass) => {
 
     // otherwise, trigger a new note
     if (!someClass.lastPlayingNote && noteToTrigger) {
-      someClass.audioNode.triggerAttack(noteToTrigger, Tone.context.currentTime, velocity / 100);
+      someClass.audioNode.triggerAttack(noteToTrigger, Tone.context.currentTime + 0.01, velocity / 100);
     }
 
     // remember which note we last triggered

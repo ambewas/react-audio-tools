@@ -5,7 +5,7 @@ import { set } from "ramda";
 import { Knob } from "../../Atoms";
 
 const style = {
-  border: "3px solid #ff7675",
+  border: "3px solid #00b894",
   padding: 32,
   margin: 24,
 };
@@ -17,14 +17,14 @@ export default (onChange, params) => {
 
   return (
     <div style={style}>
-      Distortion node!
+      Chorus node!
       {Object.keys(params).map(param => (
         <Knob
           key={param}
           onChange={(value) => onChange(set(paramLenses[param], value, params))}
           value={params[param]}
           title={param}
-          fgColor="#ff7675"
+          fgColor="#00b894"
         />
       ))}
     </div>

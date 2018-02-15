@@ -47,17 +47,19 @@ const generateEffectComponent = (name, options, UIrenderer) => {
     }
 
     checkNextPropShape = (nextProps) => {
-      // throw error if nextProps does not contain exactly all keys that the effect requires
-      const nextPropParamKeys = Object.keys(nextProps.params);
-      const uniques = paramKeys.reduce((acc, curr) => {
-        if (nextPropParamKeys.find(item => item === curr)) {
-          return acc;
-        }
-        return acc.concat(curr);
-      }, []);
+      if (nextProps.params) {
+        // throw error if nextProps does not contain exactly all keys that the effect requires
+        const nextPropParamKeys = Object.keys(nextProps.params);
+        const uniques = paramKeys.reduce((acc, curr) => {
+          if (nextPropParamKeys.find(item => item === curr)) {
+            return acc;
+          }
+          return acc.concat(curr);
+        }, []);
 
-      if (uniques && uniques.length > 0) {
-        throw new Error(`Check your prop updating code. You probably did not pass through all the expected default parameters for the ${name} effect`);
+        if (uniques && uniques.length > 0) {
+          throw new Error(`Check your prop updating code. You probably did not pass through all the expected default parameters for the ${name} effect`);
+        }
       }
     }
 
@@ -65,6 +67,8 @@ const generateEffectComponent = (name, options, UIrenderer) => {
       const { params } = nextProps;
 
       this.checkNextPropShape(nextProps);
+
+      // TODO -- this should be a lot more precise. Right now it's all a little bit chaotic and unclear about mins and maxes;
       for (const param in params) {
         const newValue = this.getValueType(param, params[param]);
 

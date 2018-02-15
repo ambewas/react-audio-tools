@@ -7,6 +7,7 @@ import { Knob } from "../../Atoms";
 const style = {
   border: "3px solid #74b9ff",
   padding: 32,
+  margin: 24,
 };
 
 export default (onChange, params) => {

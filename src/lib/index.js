@@ -5,6 +5,7 @@ import MonoSynth from "./components/synths/MonoSynth/MonoSynth";
 import AudioOutput from "./components/AudioOutput/AudioOutput";
 import Distortion from "./components/effects/Distortion/Distortion";
 import Tremolo from "./components/effects/Tremolo/Tremolo";
+import Chorus from "./components/effects/Chorus/Chorus";
 import audioContext from "./store/audioContext";
 import Connector from "./store/Connector";
 
@@ -17,6 +18,7 @@ export {
   AudioOutput,
   Distortion,
   Tremolo,
+  Chorus,
   audioContext,
   Connector,
   MidiController,

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ComputerKeyboard, { MidiController, MonoSynth, AudioOutput, Distortion, Tremolo, Connector } from "../lib";
+import ComputerKeyboard, { MidiController, MonoSynth, AudioOutput, Distortion, Tremolo, Connector, Chorus } from "../lib";
 
 class App extends Component {
   state = {}
@@ -53,8 +53,16 @@ class App extends Component {
           onChange={params => this.setState({ tremoloParams: params })}
           params={this.state.tremoloParams}
         />
-        <Distortion
+
+        <Chorus
           input={"tremolo"}
+          output={"chorus"}
+          onChange={params => this.setState({ chorusParams: params })}
+          params={this.state.chorusParams}
+        />
+
+        <Distortion
+          input={"chorus"}
           output={"distortion"}
           onChange={params => this.setState({ distortionParams: params })}
           params={this.state.distortionParams}

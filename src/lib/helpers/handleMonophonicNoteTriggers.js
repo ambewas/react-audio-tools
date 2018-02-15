@@ -1,7 +1,7 @@
 import { midiMessages } from "../constants";
 import { append, without, last } from "ramda";
 import { noteParser } from "./noteParser";
-
+import Tone from "tone";
 // handle midi messages for the specific audioNode class that is using the function.
 // note that we're assigning statics on the class, to remember which notes have been
 // played before. Got to store them somewhere. On the class itself seems fine for now.
@@ -40,7 +40,7 @@ export const handleMonophonicNoteTriggers = (midiMsg, someClass) => {
 
     // otherwise, trigger a new note
     if (!someClass.lastPlayingNote && noteToTrigger) {
-      someClass.audioNode.triggerAttack(noteToTrigger, "+0.005", velocity / 100);
+      someClass.audioNode.triggerAttack(noteToTrigger, Tone.context.currentTime, velocity / 100);
     }
 
     // remember which note we last triggered

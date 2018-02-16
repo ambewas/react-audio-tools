@@ -2,7 +2,7 @@ import React from "react";
 import connect from "./connect";
 jest.mock("../../helpers/handleMonophonicNoteTriggers");
 
-import { setupComponent, handleMonophonicNoteTriggers } from "../../helpers/index";
+import { setupComponent, handleMonophonicNoteTriggers } from "../../helpers/index/testHelpers";
 import { shallow } from "enzyme";
 
 const Component = (props) => <div {...props}></div>;

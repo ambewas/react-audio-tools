@@ -23,3 +23,6 @@ config
 .travis.yml
 CHANGELOG.md
 README.md
+architecture-things.md
+rollup.config.js
+demo

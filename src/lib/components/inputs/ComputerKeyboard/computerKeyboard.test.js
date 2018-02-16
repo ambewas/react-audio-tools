@@ -1,5 +1,5 @@
 import ComputerKeyboard from "./ComputerKeyboard";
-import { setupComponent } from "../../../helpers/index";
+import { setupComponent } from "../../../helpers/index/testHelpers";
 
 const setup = setupComponent(ComputerKeyboard, {
   keyboardLayout: "azerty",

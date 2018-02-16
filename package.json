@@ -1,14 +1,14 @@
 {
   "name": "react-audio-tools",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A set of React components to build things with the webAudio/webMidi API.",
   "main": "build/index.js",
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
     "demo": "node scripts/demo.js",
     "test": "node scripts/test.js --env=jsdom",
-    "coverage": "node scripts/test.js --env=jsdom --coverage"
+    "coverage": "node scripts/test.js --env=jsdom --coverage",
+    "rollup": "NODE_ENV=production rollup -c"
   },
   "repository": {
     "type": "git",
@@ -16,16 +16,10 @@
   },
   "author": "Kevin Decock",
   "bugs": {
-    "url": "https://github.com/ambewas/react-audio-tools/issues"
+    "url": "https://github.com/ambewas/react-audio-tools"
   },
   "homepage": "https://github.com/ambewas/react-audio-tools#readme",
   "license": "MIT",
-  "dependencies": {
-    "lensify": "^0.1.0",
-    "ramda": "^0.25.0",
-    "tone": "^0.11.11",
-    "webmidi": "^2.0.0"
-  },
   "devDependencies": {
     "@district01/eslint-config": "^2.0.0",
     "autoprefixer": "7.1.6",
@@ -33,6 +27,7 @@
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
     "babel-loader": "7.1.2",
+    "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-react-app": "^3.1.0",
     "babel-runtime": "6.26.0",
     "case-sensitive-paths-webpack-plugin": "2.1.1",
@@ -58,14 +53,18 @@
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
     "promise": "8.0.1",
-    "prop-types": "^15.6.0",
     "raf": "3.4.0",
     "react": "^16.2.0",
     "react-dev-utils": "^4.2.1",
     "react-dom": "^16.2.0",
     "react-test-renderer": "^16.2.0",
+    "rollup": "^0.56.0",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-node-resolve": "^3.0.3",
+    "rollup-plugin-uglify-es": "0.0.1",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
+    "uglify-es": "^3.3.9",
     "url-loader": "0.6.2",
     "webpack": "3.8.1",
     "webpack-dev-server": "2.9.4",
@@ -73,8 +72,13 @@
     "whatwg-fetch": "2.0.3"
   },
   "peerDependencies": {
-    "react": ">=0.14",
-    "react-dom": ">=0.14"
+    "prop-types": "^15.6.0",
+    "lensify": "^0.1.0",
+    "ramda": "^0.25.0",
+    "tone": "^0.11.11",
+    "webmidi": "^2.0.0",
+    "react": ">=0.16",
+    "react-dom": ">=0.16"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -118,5 +122,11 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "dependencies": {
+    "lensify": "^0.1.0",
+    "ramda": "^0.25.0",
+    "tone": "^0.11.11",
+    "webmidi": "^2.0.0"
   }
 }

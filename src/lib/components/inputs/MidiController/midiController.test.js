@@ -1,4 +1,4 @@
-import { setupComponent } from "../../../helpers/index";
+import { setupComponent } from "../../../helpers/index/testHelpers";
 import MidiController from "./MidiController";
 import webmidi from "webmidi";
 

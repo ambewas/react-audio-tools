@@ -3,3 +3,6 @@ node_js:
  - "node"
 script:
  - npm run test
+before_install:
+ - npm install lensify ramda tone webmidi react react-dom
+

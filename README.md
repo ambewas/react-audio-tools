@@ -1,3 +1,8 @@
+[![Travis](https://img.shields.io/travis/ambewas/react-audio-tools.svg)]()
+[![npm](https://img.shields.io/npm/v/react-audio-tools.svg)]()
+[![npm](https://img.shields.io/npm/dt/react-audio-tools.svg)]()
+[![GitHub last commit](https://img.shields.io/github/last-commit/ambewas/react-audio-tools.svg)]()
+
 A set of React components to build things with the webAudio/webMidi API.
 
 ## Demo app

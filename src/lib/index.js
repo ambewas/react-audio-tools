@@ -6,6 +6,9 @@ import AudioOutput from "./components/AudioOutput/AudioOutput";
 import Distortion from "./components/effects/Distortion/Distortion";
 import Tremolo from "./components/effects/Tremolo/Tremolo";
 import Chorus from "./components/effects/Chorus/Chorus";
+import BitCrusher from "./components/effects/BitCrusher/BitCrusher";
+import Reverb from "./components/effects/Reverb/Reverb";
+import PingPongDelay from "./components/effects/PingPongDelay/PingPongDelay";
 import audioContext from "./store/audioContext";
 import Connector from "./store/Connector";
 
@@ -22,4 +25,7 @@ export {
   audioContext,
   Connector,
   MidiController,
+  BitCrusher,
+  Reverb,
+  PingPongDelay,
 };

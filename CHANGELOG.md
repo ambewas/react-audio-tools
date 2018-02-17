@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.12
+- added on/off controls
+- generateEffectsRenderer HOC added for convenience during development
+
 ## 0.0.11
 - added qwerty support
 

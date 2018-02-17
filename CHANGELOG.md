@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.13
+- added more effects:
+  - PingPongDelay
+  - BitCrusher
+  - Reverb
+
 ## 0.0.12
 - added on/off controls
 - generateEffectsRenderer HOC added for convenience during development

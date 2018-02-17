@@ -45,6 +45,8 @@ class App extends Component {
       tremoloEnabled: true,
       chorusEnabled: true,
       distortionEnabled: true,
+      pingPongDelayEnabled: true,
+      reverbEnabled: false,
       distortionParams: {
         distortion: 1,
         wet: 50,
@@ -103,8 +105,26 @@ class App extends Component {
           enabled={this.state.chorusEnabled}
         />
 
-        <Distortion
+        <Reverb
           input={"chorus"}
+          output={"reverb"}
+          onChange={params => this.setState({ reverbParams: params })}
+          params={this.state.reverbParams}
+          onEnableChange={value => this.setState({ reverbEnabled: value })}
+          enabled={this.state.reverbEnabled}
+        />
+
+        <PingPongDelay
+          input={"reverb"}
+          output={"pingPongDelay"}
+          onChange={params => this.setState({ pingPongDelayParams: params })}
+          params={this.state.pingPongDelayParams}
+          onEnableChange={value => this.setState({ pingPongDelayEnabled: value })}
+          enabled={this.state.pingPongDelayEnabled}
+        />
+
+        <Distortion
+          input={"pingPongDelay"}
           output={"distortion"}
           onChange={params => this.setState({ distortionParams: params })}
           params={this.state.distortionParams}

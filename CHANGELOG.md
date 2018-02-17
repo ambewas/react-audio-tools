@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.11
+- added qwerty support
+
 ## 0.0.8
 - bundling with rollup
 - Chorus component

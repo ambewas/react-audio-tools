@@ -30,7 +30,6 @@ export default (name, color) => (onChange, params, enabled, onEnableChange, para
         {Object.keys(params).map(param => {
           const parameterType = parameterTypes[param];
 
-          console.log("parameterType", parameterType);
           return (
             <Knob
               key={param}

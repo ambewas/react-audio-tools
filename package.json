@@ -1,6 +1,6 @@
 {
   "name": "react-audio-tools",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A set of React components to build things with the webAudio/webMidi API.",
   "main": "build/index.js",
   "scripts": {

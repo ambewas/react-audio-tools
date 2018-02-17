@@ -74,11 +74,24 @@ describe("ComputerKeyboard", () => {
   });
 
 
-  it("should set the correct octave to state when w or x is pressed", () => {
+  it("should set the correct octave to state when w or x is pressed on an azerty keyboard", () => {
     const { component } = setup();
 
     expect(component.state().currentOctave).toBe(3);
     eventMocker.keydown({ keyCode: 87 });
+    expect(component.state().currentOctave).toBe(2);
+    eventMocker.keydown({ keyCode: 88 });
+    eventMocker.keyup({ keyCode: 88 });
+    eventMocker.keydown({ keyCode: 88 });
+    expect(component.state().currentOctave).toBe(4);
+  });
+
+
+  it("should set the correct octave to state when z or x is pressed on a qwerty keyboard", () => {
+    const { component } = setup({ keyboardLayout: "qwerty" });
+
+    expect(component.state().currentOctave).toBe(3);
+    eventMocker.keydown({ keyCode: 90 });
     expect(component.state().currentOctave).toBe(2);
     eventMocker.keydown({ keyCode: 88 });
     eventMocker.keyup({ keyCode: 88 });

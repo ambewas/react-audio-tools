@@ -7,6 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      keyboardLayout: "qwerty",
       useMidiController: false,
       /**
        * Effects,... are all controlled components.
@@ -26,14 +27,25 @@ class App extends Component {
   }
 
   render() {
-    const { useMidiController } = this.state;
+    const { useMidiController, keyboardLayout } = this.state;
 
     return (
       <Connector>
-        Toggle between midi and computerKeyboard:
-        <button onClick={() => this.setState(prevState => ({ useMidiController: !prevState.useMidiController }))}>
-          {useMidiController ? "use keyboard" : "use midicontroller"}
-        </button>
+        <div>
+          Toggle between midi and computerKeyboard:
+          <button onClick={() => this.setState(prevState => ({ useMidiController: !prevState.useMidiController }))}>
+            {useMidiController ? "use keyboard" : "use midicontroller"}
+          </button>
+        </div>
+        <div>
+          Set keyboard layout:
+          <button onClick={() => this.setState({ keyboardLayout: "azerty" })}>
+            {"azerty"}
+          </button>
+          <button onClick={() => this.setState({ keyboardLayout: "qwerty" })}>
+            {"qwerty"}
+          </button>
+        </div>
 
         {
           useMidiController ? (
@@ -41,7 +53,7 @@ class App extends Component {
               {msg => <MonoSynth midiMsg={msg} output={"monosynth"} />}
             </MidiController>
           ) : (
-            <ComputerKeyboard controlled keyboardLayout="azerty">
+            <ComputerKeyboard controlled keyboardLayout={keyboardLayout}>
               {msg => <MonoSynth midiMsg={msg} output={"monosynth"} />}
             </ComputerKeyboard>
           )

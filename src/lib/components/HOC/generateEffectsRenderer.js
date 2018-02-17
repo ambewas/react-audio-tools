@@ -4,7 +4,7 @@ import lensify from "lensify";
 import { set } from "ramda";
 import { Knob } from "../Atoms";
 
-export default (name, color) => (onChange, params, enabled, onEnableChange) => {
+export default (name, color) => (onChange, params, enabled, onEnableChange, parameterTypes) => {
   const paramLenses = lensify(params);
   // make sure any edits that happen to the params object is passed through to onChange again
   // otherwise we lose functionality
@@ -19,7 +19,7 @@ export default (name, color) => (onChange, params, enabled, onEnableChange) => {
 
   return (
     <div style={style}>
-      {name} node!
+      The {name}
       <button
         style={{ position: "absolute", top: 0, right: 0, margin: 12 }}
         onClick={() => onEnableChange(!enabled)}
@@ -27,16 +27,23 @@ export default (name, color) => (onChange, params, enabled, onEnableChange) => {
         {enabled ? "disable" : "enable"}
       </button>
       <div style={{ display: "flex" }}>
-        {Object.keys(params).map(param => (
-          <Knob
-            key={param}
-            onChange={(value) => onChange(set(paramLenses[param], value, params))}
-            value={params[param]}
-            title={param}
-            fgColor={color}
-            style={{ margin: 10 }}
-          />
-        ))}
+        {Object.keys(params).map(param => {
+          const parameterType = parameterTypes[param];
+
+          console.log("parameterType", parameterType);
+          return (
+            <Knob
+              key={param}
+              onChange={(value) => onChange(set(paramLenses[param], value, params))}
+              value={params[param]}
+              title={param}
+              fgColor={color}
+              style={{ margin: 10 }}
+              min={parameterType.min}
+              max={parameterType.max}
+            />
+          );
+        })}
       </div>
     </div>
   );

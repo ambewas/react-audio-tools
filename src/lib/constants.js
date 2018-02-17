@@ -8,4 +8,5 @@ export const midiMessages = {
 
 export const parameterTypes = {
   NORMALRANGE: "normalRange",
+  FULL: "full",
 };

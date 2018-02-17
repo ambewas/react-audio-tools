@@ -12,8 +12,14 @@ const options = {
     wet: 1,
   },
   parameterTypes: {
-    bits: parameterTypes.FULL,
-    wet: parameterTypes.NORMALRANGE,
+    bits: {
+      type: parameterTypes.FULL,
+      min: 0,
+      max: 5,
+    },
+    wet: {
+      type: parameterTypes.NORMALRANGE,
+    },
   },
 };
 

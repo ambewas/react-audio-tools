@@ -17,6 +17,6 @@ const options = {
   },
 };
 
-const Tremolo = generateEffectComponent("Bitcrusher", options, bitCrusherRenderer);
+const BitCrusher = generateEffectComponent("Bitcrusher", options, bitCrusherRenderer);
 
-export default Tremolo;
+export default BitCrusher;

@@ -76,6 +76,7 @@ const generateEffectComponent = (name, options, UIrenderer) => {
 
         // TODO -- this should be a lot more precise. Right now it's all a little bit chaotic and unclear about mins and maxes;
         for (const param in params) {
+          console.log("param", param);
           const newValue = this.getValueType(param, params[param]);
 
           if (this.audioNode[param].rampTo) {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ComputerKeyboard, { MidiController, MonoSynth, AudioOutput, Distortion, Tremolo, Connector, Chorus, Reverb } from "../lib";
+import ComputerKeyboard, { MidiController, MonoSynth, AudioOutput, Distortion, Tremolo, Connector, Chorus, Reverb, PingPongDelay } from "../lib";
 
 class App extends Component {
   state = {}
@@ -24,6 +24,7 @@ class App extends Component {
       tremoloEnabled: true,
       chorusEnabled: true,
       distortionEnabled: true,
+      pingPongDelayEnabled: true,
       reverbEnabled: false,
       distortionParams: {
         distortion: 1,
@@ -92,8 +93,17 @@ class App extends Component {
           enabled={this.state.reverbEnabled}
         />
 
-        <Distortion
+        <PingPongDelay
           input={"reverb"}
+          output={"pingPongDelay"}
+          onChange={params => this.setState({ pingPongDelayParams: params })}
+          params={this.state.pingPongDelayParams}
+          onEnableChange={value => this.setState({ pingPongDelayEnabled: value })}
+          enabled={this.state.pingPongDelayEnabled}
+        />
+
+        <Distortion
+          input={"pingPongDelay"}
           output={"distortion"}
           onChange={params => this.setState({ distortionParams: params })}
           params={this.state.distortionParams}

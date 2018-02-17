@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ComputerKeyboard, { MidiController, MonoSynth, AudioOutput, Distortion, Tremolo, Connector, Chorus } from "../lib";
+import ComputerKeyboard, { MidiController, MonoSynth, AudioOutput, Distortion, Tremolo, Connector, Chorus, BitCrusher } from "../lib";
 
 class App extends Component {
   state = {}
@@ -24,6 +24,7 @@ class App extends Component {
       tremoloEnabled: true,
       chorusEnabled: true,
       distortionEnabled: true,
+      bitCrusherEnabled: false,
       distortionParams: {
         distortion: 1,
         wet: 50,
@@ -82,8 +83,17 @@ class App extends Component {
           enabled={this.state.chorusEnabled}
         />
 
-        <Distortion
+        <BitCrusher
           input={"chorus"}
+          output={"bitcrusher"}
+          onChange={params => this.setState({ bitCrusherParams: params })}
+          params={this.state.bitCrusherParams}
+          onEnableChange={value => this.setState({ bitCrusherEnabled: value })}
+          enabled={this.state.bitCrusherEnabled}
+        />
+
+        <Distortion
+          input={"bitcrusher"}
           output={"distortion"}
           onChange={params => this.setState({ distortionParams: params })}
           params={this.state.distortionParams}

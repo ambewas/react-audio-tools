@@ -2,7 +2,7 @@ import Tone from "tone";
 import { generateEffectComponent } from "../../HOC";
 import pingPongDelayRenderer from "./pingPongDelayRenderer";
 import { parameterTypes } from "../../../constants";
-console.log("new Tone.PingPongDelay", new Tone.PingPongDelay());
+
 const options = {
   connectOptions: {
     audioNode: new Tone.PingPongDelay("4n"),

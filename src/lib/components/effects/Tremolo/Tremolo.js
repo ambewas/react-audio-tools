@@ -9,15 +9,27 @@ const options = {
   },
   defaultParameters: {
     frequency: 1,
-    depth: 1,
+    depth: 100,
     spread: 0,
     wet: 100,
   },
   parameterTypes: {
-    frequency: parameterTypes.FULL,
-    spread: parameterTypes.FULL,
-    depth: parameterTypes.NORMALRANGE,
-    wet: parameterTypes.NORMALRANGE,
+    frequency: {
+      type: parameterTypes.FULL,
+      min: 0,
+      max: 20,
+    },
+    spread: {
+      type: parameterTypes.FULL,
+      min: 0,
+      max: 180,
+    },
+    depth: {
+      type:parameterTypes.NORMALRANGE,
+    },
+    wet: {
+      type:parameterTypes.NORMALRANGE,
+    },
   },
 };
 

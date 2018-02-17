@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      keyboardLayout: "qwerty",
+      keyboardLayout: "azerty",
       useMidiController: false,
       /**
        * Effects,... are all controlled components.
@@ -16,15 +16,15 @@ class App extends Component {
        * We will throw an error if you don't
        */
       tremoloParams: {
-        frequency: 23,
-        depth: 1,
+        frequency: 2,
+        depth: 100,
         spread: 0,
         wet: 100,
       },
       tremoloEnabled: true,
-      chorusEnabled: true,
-      distortionEnabled: true,
-      pingPongDelayEnabled: true,
+      chorusEnabled: false,
+      distortionEnabled: false,
+      pingPongDelayEnabled: false,
       reverbEnabled: false,
       distortionParams: {
         distortion: 1,

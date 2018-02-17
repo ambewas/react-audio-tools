@@ -37,7 +37,9 @@ const generateEffectComponent = (name, options, UIrenderer) => {
     }
 
     getValueType = (param, value) => {
-      switch (options.parameterTypes[param]) {
+      // TODO -- this should be a lot more precise. Right now it's all a little bit chaotic and unclear about mins and maxes;
+
+      switch (options.parameterTypes[param].type) {
       case parameterTypes.NORMALRANGE:
         return value / 100;
 
@@ -74,9 +76,7 @@ const generateEffectComponent = (name, options, UIrenderer) => {
 
         this.checkNextPropShape(nextProps);
 
-        // TODO -- this should be a lot more precise. Right now it's all a little bit chaotic and unclear about mins and maxes;
         for (const param in params) {
-          console.log("param", param);
           const newValue = this.getValueType(param, params[param]);
 
           if (this.audioNode[param].rampTo) {
@@ -97,10 +97,10 @@ const generateEffectComponent = (name, options, UIrenderer) => {
       const { renderer, onChange, params, enabled, onEnableChange } = this.props;
 
       if (renderer) {
-        return renderer(onChange, params, enabled, onEnableChange);
+        return renderer(onChange, params, enabled, onEnableChange, options.parameterTypes);
       }
 
-      return UIrenderer(onChange, params, enabled, onEnableChange);
+      return UIrenderer(onChange, params, enabled, onEnableChange, options.parameterTypes);
     }
 
     render() {

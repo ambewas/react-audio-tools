@@ -12,8 +12,12 @@ const options = {
     wet: 100,
   },
   parameterTypes: {
-    distortion: parameterTypes.NORMALRANGE,
-    wet: parameterTypes.NORMALRANGE,
+    distortion: {
+      type: parameterTypes.NORMALRANGE,
+    },
+    wet: {
+      type: parameterTypes.NORMALRANGE,
+    },
   },
 };
 

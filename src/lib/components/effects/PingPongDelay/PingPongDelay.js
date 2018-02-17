@@ -13,9 +13,15 @@ const options = {
     wet: 50,
   },
   parameterTypes: {
-    delayTime: parameterTypes.NORMALRANGE,
-    feedback: parameterTypes.NORMALRANGE,
-    wet: parameterTypes.NORMALRANGE,
+    delayTime: {
+      type: parameterTypes.NORMALRANGE,
+    },
+    feedback: {
+      type: parameterTypes.NORMALRANGE,
+    },
+    wet: {
+      type: parameterTypes.NORMALRANGE,
+    },
   },
 };
 

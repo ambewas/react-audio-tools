@@ -13,9 +13,15 @@ const options = {
     wet: 100,
   },
   parameterTypes: {
-    roomSize: parameterTypes.NORMALRANGE,
-    dampening: parameterTypes.FULL,
-    wet: parameterTypes.NORMALRANGE,
+    roomSize: {
+      type: parameterTypes.NORMALRANGE,
+    },
+    dampening: {
+      type: parameterTypes.FULL,
+    },
+    wet: {
+      type: parameterTypes.NORMALRANGE,
+    },
   },
 };
 

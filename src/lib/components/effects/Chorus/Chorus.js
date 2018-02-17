@@ -14,10 +14,18 @@ const options = {
     wet: 100,
   },
   parameterTypes: {
-    frequency: parameterTypes.FULL,
-    delayTime: parameterTypes.FULL,
-    depth: parameterTypes.NORMALRANGE,
-    wet: parameterTypes.NORMALRANGE,
+    frequency: {
+      type: parameterTypes.FULL,
+    },
+    delayTime: {
+      type: parameterTypes.FULL,
+    },
+    depth: {
+      type: parameterTypes.NORMALRANGE,
+    },
+    wet: {
+      type: parameterTypes.NORMALRANGE,
+    },
   },
 };
 

@@ -3,7 +3,7 @@ import BaseKnob from "./BaseKnob";
 import PropTypes from "prop-types";
 
 const Knob = (props) => (
-  <div>
+  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", ...props.style }}>
     <BaseKnob width={75} height={75} {...props} />
     {props.title}
   </div>
@@ -11,6 +11,7 @@ const Knob = (props) => (
 
 Knob.propTypes = {
   title: PropTypes.string,
+  style: PropTypes.object,
 };
 
 export default Knob;

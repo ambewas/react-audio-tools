@@ -34,7 +34,7 @@ class MonoSynth extends Component {
     const { knobValue } = this.state;
 
     return (
-      <div>
+      <div style={{ display: "flex" }}>
         this is the monosynth
         <Knob onChange={this.handleKnobChange} value={knobValue}/>
       </div>

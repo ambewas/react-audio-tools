@@ -8,6 +8,7 @@ const style = {
   border: "3px solid #74b9ff",
   padding: 32,
   margin: 24,
+  display: "inline-block",
 };
 
 export default (onChange, params) => {
@@ -18,15 +19,18 @@ export default (onChange, params) => {
   return (
     <div style={style}>
       Tremolo node!
-      {Object.keys(params).map(param => (
-        <Knob
-          key={param}
-          onChange={(value) => onChange(set(paramLenses[param], value, params))}
-          value={params[param]}
-          title={param}
-          fgColor={"#74b9ff"}
-        />
-      ))}
+      <div style={{ display: "flex" }}>
+        {Object.keys(params).map(param => (
+          <Knob
+            key={param}
+            onChange={(value) => onChange(set(paramLenses[param], value, params))}
+            value={params[param]}
+            title={param}
+            fgColor={"#74b9ff"}
+            style={{ margin: 10 }}
+          />
+        ))}
+      </div>
     </div>
   );
 };

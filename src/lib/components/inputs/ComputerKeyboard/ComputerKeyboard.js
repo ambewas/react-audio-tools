@@ -7,6 +7,14 @@ import { midiMessages } from "../../../constants";
 const azertyKeysToListenTo = ["81", "90", "83", "69", "68", "70", "84", "71", "89", "72", "85", "74", "75", "79", "76", "80", "77", "87", "88", "16"];
 const qwertyKeysToListenTo = ["65", "87", "83", "69", "68", "70", "84", "71", "89", "72", "85", "74", "75", "79", "76", "80", "186", "90", "88", "16"];
 
+function isOctaveDownKey(keyboardLayout, keyCode) {
+  if (keyboardLayout === "qwerty") {
+    return keyCode === 90;
+  }
+
+  return keyCode === 87;
+}
+
 function generateKeyboardSynth(octave, keyboardLayout) {
   // midi note matrix -> http://www.electronics.dit.ie/staff/tscarff/Music_technology/midi/midi_note_numbers_for_octaves.htm
 
@@ -156,8 +164,8 @@ export class ComputerKeyboard extends Component {
 		  return;
 	  }
 
-	  if (e.keyCode === 87 && currentOctave > 0) {
-	    // pressed the 'W' key, we're going down an octave
+	  if (isOctaveDownKey(keyboardLayout, e.keyCode) && currentOctave > 0) {
+	    // pressed the 'W'/'Z' key, we're going down an octave
 	    this.keySynth = generateKeyboardSynth(currentOctave - 1, keyboardLayout);
 	    this.setState(prevState => ({
 	      currentOctave: prevState.currentOctave - 1,
@@ -191,7 +199,7 @@ export class ComputerKeyboard extends Component {
 	}
 
 	_handleKeyUp = (e) => {
-	  const { controlled } = this.props;
+	  const { controlled, keyboardLayout } = this.props;
 
 	  if (!controlled) {
 	    return;
@@ -218,7 +226,7 @@ export class ComputerKeyboard extends Component {
 	    return;
 	  }
 
-	  if (e.keyCode === 87 || e.keyCode === 88 || e.keyCode === 16) {
+	  if (isOctaveDownKey(keyboardLayout, e.keyCode) || e.keyCode === 88 || e.keyCode === 16) {
 	    // we're changing the octave or stopping sustain; we don't want to send a note off event to get continuous playback
 	    return;
 	  }

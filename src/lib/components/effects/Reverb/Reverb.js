@@ -8,7 +8,7 @@ const options = {
     audioNode: new Tone.Freeverb(),
   },
   defaultParameters: {
-    roomSize: 100,
+    roomSize: 50,
     dampening: 1000,
     wet: 100,
   },
@@ -18,6 +18,8 @@ const options = {
     },
     dampening: {
       type: parameterTypes.FULL,
+      min: 20,
+      max: 20000,
     },
     wet: {
       type: parameterTypes.NORMALRANGE,

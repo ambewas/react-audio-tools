@@ -19,7 +19,7 @@ export default (name, color) => (onChange, params, enabled, onEnableChange, para
 
   return (
     <div style={style}>
-      {name} node!
+      The {name}
       <button
         style={{ position: "absolute", top: 0, right: 0, margin: 12 }}
         onClick={() => onEnableChange(!enabled)}

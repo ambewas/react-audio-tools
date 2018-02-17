@@ -22,10 +22,13 @@ const generateEffectComponent = (name, options, UIrenderer) => {
       renderer: PropTypes.func,
       onChange: PropTypes.func.isRequired,
       params: PropTypes.shape(paramShape).isRequired,
+      enabled: PropTypes.bool,
+      onEnableChange: PropTypes.func,
     }
 
     static defaultProps = {
       params: options.defaultParameters,
+      enabled: true,
     }
 
     constructor(props) {
@@ -64,30 +67,39 @@ const generateEffectComponent = (name, options, UIrenderer) => {
     }
 
     componentWillReceiveProps(nextProps) {
-      const { params } = nextProps;
+      const { params, enabled } = nextProps;
 
-      this.checkNextPropShape(nextProps);
+      if (enabled) {
+        this.audioNode.wet.rampTo(1);
 
-      // TODO -- this should be a lot more precise. Right now it's all a little bit chaotic and unclear about mins and maxes;
-      for (const param in params) {
-        const newValue = this.getValueType(param, params[param]);
+        this.checkNextPropShape(nextProps);
 
-        if (this.audioNode[param].rampTo) {
-          this.audioNode[param].rampTo(newValue);
-        } else {
-          this.audioNode[param] = newValue;
+        // TODO -- this should be a lot more precise. Right now it's all a little bit chaotic and unclear about mins and maxes;
+        for (const param in params) {
+          const newValue = this.getValueType(param, params[param]);
+
+          if (this.audioNode[param].rampTo) {
+            this.audioNode[param].rampTo(newValue);
+          } else {
+            this.audioNode[param] = newValue;
+          }
         }
+
+        return;
       }
+      // effect is disabled. Set wet signal to 0.
+      this.audioNode.wet.rampTo(0);
+      return;
     }
 
     getComponentRenderer() {
-      const { renderer, onChange, params } = this.props;
+      const { renderer, onChange, params, enabled, onEnableChange } = this.props;
 
       if (renderer) {
-        return renderer();
+        return renderer(onChange, params, enabled, onEnableChange);
       }
 
-      return UIrenderer(onChange, params);
+      return UIrenderer(onChange, params, enabled, onEnableChange);
     }
 
     render() {

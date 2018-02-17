@@ -11,11 +11,13 @@ const options = {
     frequency: 4,
     delayTime: 2.5,
     depth: 0.5,
+    wet: 100,
   },
   parameterTypes: {
     frequency: parameterTypes.FULL,
     delayTime: parameterTypes.FULL,
     depth: parameterTypes.NORMALRANGE,
+    wet: parameterTypes.NORMALRANGE,
   },
 };
 

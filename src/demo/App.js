@@ -19,9 +19,14 @@ class App extends Component {
         frequency: 23,
         depth: 1,
         spread: 0,
+        wet: 100,
       },
+      tremoloEnabled: true,
+      chorusEnabled: true,
+      distortionEnabled: true,
       distortionParams: {
         distortion: 1,
+        wet: 50,
       },
     };
   }
@@ -64,6 +69,8 @@ class App extends Component {
           output={"tremolo"}
           onChange={params => this.setState({ tremoloParams: params })}
           params={this.state.tremoloParams}
+          onEnableChange={value => this.setState({ tremoloEnabled: value })}
+          enabled={this.state.tremoloEnabled}
         />
 
         <Chorus
@@ -71,6 +78,8 @@ class App extends Component {
           output={"chorus"}
           onChange={params => this.setState({ chorusParams: params })}
           params={this.state.chorusParams}
+          onEnableChange={value => this.setState({ chorusEnabled: value })}
+          enabled={this.state.chorusEnabled}
         />
 
         <Distortion
@@ -78,6 +87,8 @@ class App extends Component {
           output={"distortion"}
           onChange={params => this.setState({ distortionParams: params })}
           params={this.state.distortionParams}
+          onEnableChange={value => this.setState({ distortionEnabled: value })}
+          enabled={this.state.distortionEnabled}
         />
         <AudioOutput input={"distortion"} />
       </Connector>

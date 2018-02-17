@@ -11,11 +11,13 @@ const options = {
     frequency: 1,
     depth: 1,
     spread: 0,
+    wet: 100,
   },
   parameterTypes: {
     frequency: parameterTypes.FULL,
     spread: parameterTypes.FULL,
     depth: parameterTypes.NORMALRANGE,
+    wet: parameterTypes.NORMALRANGE,
   },
 };
 

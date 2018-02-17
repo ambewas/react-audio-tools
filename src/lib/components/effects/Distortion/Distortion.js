@@ -9,9 +9,11 @@ const options = {
   },
   defaultParameters: {
     distortion: 1,
+    wet: 100,
   },
   parameterTypes: {
     distortion: parameterTypes.NORMALRANGE,
+    wet: parameterTypes.NORMALRANGE,
   },
 };
 

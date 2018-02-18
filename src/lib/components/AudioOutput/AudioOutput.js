@@ -64,9 +64,10 @@ class AudioOutput extends Component {
       width: 30,
       height: 100,
       position: "relative",
-      background: "linear-gradient(#61e57f, yellow 80%, #f30303 100%)",
+      background: meterLevel !== -Infinity && "linear-gradient(#61e57f, yellow 80%, #f30303 100%)",
       overflow: "hidden",
       transform: "rotate(180deg)",
+      border: "2px solid black",
     };
 
     const meterCoverStyle = {
@@ -89,11 +90,9 @@ class AudioOutput extends Component {
           min={-60}
           max={6}
         />
-        {meterLevel !== -Infinity && (
-          <div style={meterWrapperStyle}>
-            <div style={meterCoverStyle} />
-          </div>
-        )}
+        <div style={meterWrapperStyle}>
+          <div style={meterCoverStyle} />
+        </div>
       </div>
     );
   }

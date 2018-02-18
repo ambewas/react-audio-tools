@@ -22,13 +22,14 @@ This is a *very* young library and is still in constant development. Do not expe
 Here's the full code from our demo application:
 
 ```js
+
 class App extends Component {
   state = {}
 
   constructor() {
     super();
     this.state = {
-      keyboardLayout: "qwerty",
+      keyboardLayout: "azerty",
       useMidiController: false,
       /**
        * Effects,... are all controlled components.
@@ -37,20 +38,21 @@ class App extends Component {
        * We will throw an error if you don't
        */
       tremoloParams: {
-        frequency: 23,
-        depth: 1,
+        frequency: 2,
+        depth: 100,
         spread: 0,
         wet: 100,
       },
       tremoloEnabled: true,
-      chorusEnabled: true,
-      distortionEnabled: true,
-      pingPongDelayEnabled: true,
+      chorusEnabled: false,
+      distortionEnabled: false,
+      pingPongDelayEnabled: false,
       reverbEnabled: false,
       distortionParams: {
         distortion: 1,
         wet: 50,
       },
+      volume: -5,
     };
   }
 
@@ -131,11 +133,16 @@ class App extends Component {
           onEnableChange={value => this.setState({ distortionEnabled: value })}
           enabled={this.state.distortionEnabled}
         />
-        <AudioOutput input={"distortion"} />
+        <div>
+          <AudioOutput
+            input={"distortion"}
+            volume={this.state.volume}
+            onVolumeChange={value => this.setState({ volume: value })}
+          />
+        </div>
       </Connector>
     );
   }
 }
-
 
 ```

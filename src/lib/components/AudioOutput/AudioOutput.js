@@ -19,13 +19,13 @@ class AudioOutput extends Component {
     this.volume = new Tone.Volume(-8);
     this.meter = new Tone.Meter(0.01);
     this.state = {
-      meterLevel: 0,
+      meterLevel: 1,
       volume: -8,
     };
   }
 
   componentDidMount() {
-    this.interval = window.setInterval(this.updateMeter, 100);
+    this.interval = window.setInterval(this.updateMeter, 1000 / 60);
   }
 
   componentWillUnmount() {
@@ -57,21 +57,43 @@ class AudioOutput extends Component {
   }
 
   render() {
-    const meterLevel = this.state.meterLevel;
+    const { volume, onVolumeChange } = this.props;
+    const { meterLevel } = this.state;
+
+    const meterWrapperStyle = {
+      width: 30,
+      height: 100,
+      position: "relative",
+      background: "linear-gradient(#61e57f, yellow 80%, #f30303 100%)",
+      overflow: "hidden",
+      transform: "rotate(180deg)",
+    };
+
+    const meterCoverStyle = {
+      height: "100%",
+      background: "white",
+      transform: `scaleY(${((-meterLevel + 16) / 100)})`,
+      transformOrigin: "bottom center",
+      width: "100%",
+    };
 
     return (
       <div style={{ display: "flex" }}>
         audio output
         <Knob
-          onChange={this.props.onVolumeChange}
-          value={this.props.volume}
+          onChange={onVolumeChange}
+          value={volume}
           title={"volume"}
           fgColor={"#2d3436"}
           style={{ margin: 10 }}
           min={-60}
           max={6}
         />
-        {meterLevel}
+        {meterLevel !== -Infinity && (
+          <div style={meterWrapperStyle}>
+            <div style={meterCoverStyle} />
+          </div>
+        )}
       </div>
     );
   }

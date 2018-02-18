@@ -1,6 +1,9 @@
 # Changelog
 
 ## 0.0.13
+- added volume knob & db meter for AudioOutput component
+
+## 0.0.13
 - added more effects:
   - PingPongDelay
   - BitCrusher

@@ -30,6 +30,7 @@ class App extends Component {
         distortion: 1,
         wet: 50,
       },
+      volume: -5,
     };
   }
 
@@ -110,7 +111,13 @@ class App extends Component {
           onEnableChange={value => this.setState({ distortionEnabled: value })}
           enabled={this.state.distortionEnabled}
         />
-        <AudioOutput input={"distortion"} />
+        <div>
+          <AudioOutput
+            input={"distortion"}
+            volume={this.state.volume}
+            onVolumeChange={value => this.setState({ volume: value })}
+          />
+        </div>
       </Connector>
     );
   }

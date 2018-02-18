@@ -67,7 +67,7 @@ class AudioOutput extends Component {
       background: meterLevel !== -Infinity && "linear-gradient(#61e57f, yellow 80%, #f30303 100%)",
       overflow: "hidden",
       transform: "rotate(180deg)",
-      border: "2px solid black",
+      border: "2px solid #2d3436",
     };
 
     const meterCoverStyle = {
@@ -79,19 +79,20 @@ class AudioOutput extends Component {
     };
 
     return (
-      <div style={{ display: "flex" }}>
-        audio output
-        <Knob
-          onChange={onVolumeChange}
-          value={volume}
-          title={"volume"}
-          fgColor={"#2d3436"}
-          style={{ margin: 10 }}
-          min={-60}
-          max={6}
-        />
-        <div style={meterWrapperStyle}>
-          <div style={meterCoverStyle} />
+      <div style={{ display: "inline-block", border: "2px solid #2d3436", padding: 12, margin: 24 }}>
+        <div style={{ display: "flex" }}>
+          <Knob
+            onChange={onVolumeChange}
+            value={volume}
+            title={"volume"}
+            fgColor={"#2d3436"}
+            style={{ margin: 10 }}
+            min={-60}
+            max={6}
+          />
+          <div style={meterWrapperStyle}>
+            <div style={meterCoverStyle} />
+          </div>
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.0.13
+## 0.0.15
 - added volume knob & db meter for AudioOutput component
 
 ## 0.0.13

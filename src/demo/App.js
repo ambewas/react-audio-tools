@@ -1,5 +1,16 @@
 import React, { Component } from "react";
-import ComputerKeyboard, { MidiController, MonoSynth, AudioOutput, Distortion, Tremolo, Connector, Chorus, Reverb, PingPongDelay } from "../lib";
+import ComputerKeyboard, {
+  MidiController,
+  MonoSynth,
+  AudioOutput,
+  Distortion,
+  Tremolo,
+  Connector,
+  Chorus,
+  Reverb,
+  PingPongDelay,
+  AudioVisualizer,
+} from "../lib";
 
 class App extends Component {
   state = {}
@@ -116,6 +127,12 @@ class App extends Component {
             input={"distortion"}
             volume={this.state.volume}
             onVolumeChange={value => this.setState({ volume: value })}
+          />
+        </div>
+
+        <div>
+          <AudioVisualizer
+            input={"distortion"}
           />
         </div>
       </Connector>

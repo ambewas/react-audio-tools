@@ -3,6 +3,7 @@ import MidiController from "./components/inputs/MidiController/MidiController";
 import FMsynth from "./components/synths/FMsynth/FMsynth";
 import MonoSynth from "./components/synths/MonoSynth/MonoSynth";
 import AudioOutput from "./components/AudioOutput/AudioOutput";
+import AudioVisualizer from "./components/AudioVisualizer/AudioVisualizer";
 import Distortion from "./components/effects/Distortion/Distortion";
 import Tremolo from "./components/effects/Tremolo/Tremolo";
 import Chorus from "./components/effects/Chorus/Chorus";
@@ -28,4 +29,5 @@ export {
   BitCrusher,
   Reverb,
   PingPongDelay,
+  AudioVisualizer,
 };

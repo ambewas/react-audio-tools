@@ -122,5 +122,12 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "dependencies": {
+    "ajv": "^6.2.1",
+    "lensify": "^0.1.2",
+    "ramda": "^0.25.0",
+    "tone": "^0.11.11",
+    "webmidi": "^2.0.0"
   }
 }

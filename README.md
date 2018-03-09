@@ -17,6 +17,8 @@ This is a *very* young library and is still in constant development. Do not expe
 
 `npm i react-audio-tools --save`
 
+! notice: latest versions of NPM do not install peer dependencies automatically. Please note that react-audio-tools depends on `lensify`, `ramda`, `tone` and `webmidi`. You'll have to install these peer dependencies yourself.
+
 ## usage
 
 Here's the full code from our demo application:
